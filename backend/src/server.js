@@ -2,6 +2,9 @@
 const express = require("express")
 const server = express()
 
+const ColaboratorController = require("./controllers/ColaboratorController")
+const colaboratorController = new ColaboratorController()
+
 const CompanyController = require("./controllers/CompanyController")
 const companyController = new CompanyController()
 
@@ -22,23 +25,7 @@ server.use(express.urlencoded({ extended: true }))
 //     res.send("Company profile")
 // })
 
-server.post("/createCompany", async (req, res)=> {
-    
-    const companyObj = req.body
-
-    try {
-        
-        const create = await companyController.create(companyObj)
-
-        console.log(create)
-
-        return res.send({ create })
-    } catch (error) {
-        console.log(error)
-    }
-
-})
-
-server.post("/createColaborator")
+server.post("/createCompany", companyController.create)
+server.post("/createColaborator", colaboratorController.create)
 
 server.listen(port, ()=>{ console.log(`Server is running (http://localhost:${port})`) })

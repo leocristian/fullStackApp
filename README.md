@@ -33,8 +33,10 @@
 
 <div id="badges" align="center">
     <img src="https://img.shields.io/github/license/leocristian/Teste_Pratico_SPEEDIO" />
-    <img src="https://img.shields.io/static/v1?label=node&message=v16.13.1&color=00d420&style=flat"/>
+    <img src="https://img.shields.io/static/v1?label=node&message=v16.13.1&color=green&style=flat"/>
     <img src="https://img.shields.io/static/v1?label=npm&message=v8.1.2&color=blue&style=flat"/>
-    <img src="https://img.shields.io/static/v1?label=vue&message=v4.5.15&color=00d420style=flat"/>
-<!-- <img src="https://img.shields.io/static/v1?label=mongo&message=v8.1.2&color=blue&style=flat"/> -->
+    <img src="https://img.shields.io/static/v1?label=vue&message=v4.5.15&color=greenstyle=flat"/>
+    <img src="https://img.shields.io/static/v1?label=mongo&message=v4.2.1&color=blue&style=flat"/>
+    <img src="https://img.shields.io/static/v1?label=express&message=v4.17.1&color=blue&style=flat"/>
+
 </div>
