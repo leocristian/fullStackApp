@@ -1,0 +1,22 @@
+POST http://localhost:8000/createCompany
+Content-Type: application/json
+
+{
+	"name": "Google",
+	"address": "palo alto california",
+	"area": "tecnologia",
+	"site": "google.com",
+	"tel": "123-456"
+}
+
+###
+
+POST http://localhost:8000/createColaborator
+Content-Type: application/json
+
+{
+	"name": "Leonardo Cristian",
+	"surname": "Amorim Lopes",
+	"tel": "123-456",
+	"role": "T.I"
+}
