@@ -2,51 +2,43 @@
 const express = require("express")
 const server = express()
 
+const CompanyController = require("./controllers/CompanyController")
+const companyController = new CompanyController()
+
 const port = 8000
 
 server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
 
-server.get("/home", (req, res) => {
-    res.send("Homepage")
-})
+// server.get("/home", (req, res) => {
+//     res.send("Homepage")
+// })
 
-server.get("/dashboard", (req, res) => {
-    res.send("Dashboard")
-})
+// server.get("/dashboard", (req, res) => {
+//     res.send("Dashboard")
+// })
 
-server.get("/companyProfile", (req, res) => {
-    res.send("Company profile")
-})
+// server.get("/companyProfile", (req, res) => {
+//     res.send("Company profile")
+// })
 
-server.post("/createCompany", (req, res) => {
-    const { name, address, area, site, tel } = req.body
-
-    console.log(name)
+server.post("/createCompany", async (req, res)=> {
     
+    const companyObj = req.body
+
     try {
-        const newCompany = new Company(name, address, area, site, tel)
-        companyController.create(newCompany)
-        return res.status(200)
+        
+        const create = await companyController.create(companyObj)
+
+        console.log(create)
+
+        return res.send({ create })
     } catch (error) {
-        console.log("Erro ao criar empresa")
+        console.log(error)
     }
 
 })
 
-server.post("/createColaborator", (req, res) => {
-    const { name, surname, tel, role } = req.body
-
-    console.log(name)
-    
-    try {
-        const newColaborator = new Colaborator(name, surname, tel, role)
-        colaboratorController.create(newColaborator)
-        return res.status(200)
-    } catch (error) {
-        console.log("Erro ao criar empresa")
-    }
-
-})
+server.post("/createColaborator")
 
 server.listen(port, ()=>{ console.log(`Server is running (http://localhost:${port})`) })
