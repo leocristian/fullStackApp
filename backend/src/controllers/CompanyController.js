@@ -12,22 +12,26 @@ const collection = database.collection("company")
 
 class CompanyController {
    
-    async create(req, res) {
-        const companyObj = req.body
-    
+    async create(newCompany) {
         try {
-            const insert = collection.insertOne(companyObj)
-            console.log(companyObj.name)
-            
-            // const create = await companyController.create(companyObj)
-            console.log(companyObj.name)
+            const insert = await collection.insertOne(newCompany)
             return insert
             // return res.send({ create })
         } catch (error) {
-            console.log(error)
+            return false
         }
     
        
+    }
+
+    async readAll() {
+        try {
+            const companies = await collection.find({ }).toArray()
+
+            return companies
+        } catch (error) {
+            return error
+        }
     }
 }
 

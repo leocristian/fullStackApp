@@ -1,20 +1,37 @@
 
+const { MongoClient } = require('mongodb')
+const url = "mongodb://localhost:27017/"
+
+const client = new MongoClient(url)
+
+client.connect()
+
+const dbName = "SPEEDIO"
+const database = client.db(dbName)
+
+const collection = database.collection("colaborators")
+
 class ColaboratorController {
-    cconstructor() {
-        // Iniciar banco de dados
-    }
-    async create (req, res) {
-        const colaboratorObj = req.body
-    
+
+    async create (newColaborator) {
+        
         try {
-            const create = await colaboratorController.create(colaboratorObj)
-            return res.send({ create })
+            const insert = await collection.insertOne(newColaborator)
+
+            return insert
         } catch (error) {
             console.log(error);
+            return error
         }
     }
-    async index(req, res) {
+    async read(companyID) {
+        try {
+            const colaborators = await collection.find({ companyID: companyID }).toArray()
 
+            return colaborators
+        } catch (error) {
+            return error
+        }
     }
 }
 
