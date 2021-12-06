@@ -2,6 +2,10 @@
 
 <p align="center">Repositório para resolução do teste prático para o processo seletivo da SPEEDIO</p>
 
+<h4 align="center"> 
+	🚧 Em construção... 🚧
+</h4>
+
 <p align="center">
     <a href="#description">Descrição</a> •
     <a href="#routes">Rotas</a> •
@@ -16,17 +20,16 @@
 
 <div id="routes">
     <h2> 🗺️ Rotas da APlicação</h2>
-    
+    GET http://localhost:8000/notes <br>
+    POST http://localhost:8000/login <br>
+    POST http://localhost:8000/notes <br>
 </div>
 
 <div id="stack">
     <h2> 🪛 Tecnologias utilizadas </h2>
-   • <a href="https://nodejs.org/en/">NodeJS <img src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg" width="350" title="hover text"></a> <br>
-   • <a href="https://vuejs.org"> VueJS <img src="https://uxwing.com/wp-content/themes/uxwing/download/10-brands-and-social-media/vue-js.png" width="350" title="hover text"></a>
-   • <a href="https://expressjs.com/">ExpressJS</a> <img src="https://www.pngfind.com/pngs/m/136-1363736_express-js-icon-png-transparent-png.png" width="350" title="hover text"> <br>
-   • <a href="https://www.mongodb.com/">MongoDB</a> <img src="https://img.icons8.com/color/480/mongodb.png" width="350" title="hover text"> <br>
-</div>%                                                                        
-
-<h2></h2>
-
+   • <a href="https://nodejs.org/en/">NodeJS</a> <br>
+   • <a href="https://expressjs.com/">ExpressJS</a> <br>
+   • <a href="https://vuejs.org/">VueJS</a> <br>
+   • <a href="https://www.mongodb.com/">MongoDB</a> <br>
+</div>
 
