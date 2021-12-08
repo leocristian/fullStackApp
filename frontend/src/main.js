@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import transition from "transition"
 
 import App from './App.vue'
 import Login from "./components/Login.vue"
 import Dashboard from "./components/Dashboard.vue"
 import CompanyProfile from "./components/CompanyProfile.vue"
 import CompanyForm from "./components/CompanyForm.vue"
+import ColaboratorForm from "./components/ColaboratorForm.vue"
 
 import { BootstrapVue } from 'bootstrap-vue'
 
@@ -22,7 +24,8 @@ const router = new VueRouter({
     { path: "/", redirect: "/login"},
     { path: "/dashboard", component: Dashboard},
     { path: "/companyProfile/:id", component: CompanyProfile},
-    { path: "/createCompany", component: CompanyForm}
+    { path: "/createCompany", component: CompanyForm},
+    { path: "/companyProfile/:companyID/createColaborator", component: ColaboratorForm}
   ]
 })
 
@@ -32,5 +35,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  transition,
   render: h => h(App),
 }).$mount('#app')

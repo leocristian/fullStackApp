@@ -2,6 +2,7 @@
     <div class="container md-2">
 
         <h2 class="text-center mb-5 title-login">Lista de colaboradores</h2>
+        <!-- <button type="button" class="btn" @click="showModal">Novo colaborador</button> -->
         <b-button v-on:click="newColaborator" variant="outline-primary" style="margin-left: 920px;">Novo colaborador</b-button>
         <div v-for="(colaborator, index) in colaborators" :key="index">
             <b-card :title="colaborator.name">
@@ -20,12 +21,11 @@
 
     export default {
         data() {
-            return { colaborators: [] }
+            return { colaborators: [], companyID: this.$route.params.id }
         },
         created() {
-            var companyID = this.$route.params.id
-            console.log("company id: " + companyID)
-            api.get(`companyProfile/${companyID}`).then((response) => {
+            console.log("company id: " + this.companyID)
+            api.get(`companyProfile/${this.companyID}`).then((response) => {
                 this.colaborators = response.data
 
                 console.log(this.colaborators)
@@ -33,7 +33,8 @@
         },
         methods: {
             newColaborator() {
-                alert("ok")
+                this.$router.push(this.companyID + "/createColaborator")
+
             }
         }
     }
