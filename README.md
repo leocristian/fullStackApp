@@ -8,7 +8,7 @@
 
 <p align="center">
     <a href="#description">Descrição</a> •
-    <a href="#routes">Rotas</a> •
+    <a href="#features">Funcionalidades</a> •
     <a href="#stack">Tecnologias</a>
 </p>
 
@@ -18,13 +18,13 @@
     O usuário ainda, selecionar em uma lista COLABORADORES cadastrados no sistema e realizar o envio de um email[1] cuja mensagem do email, deve ser preenchida pelo usuário bem como o assunto do email deverá ser preenchido pelo próprio usuário.</p>
 </div>
 
-<div id="methods">
-    <h2> 🗺️ Funcionalidades da aplicação</h2>
-    <ul>
-        <li> ✔️ Cadastro de empresas</li>
-        <li> ✔️ Listagem de colaboradores</li>
-    </ul>
-</div>
+### Funcionalidades da aplicação
+
+- [ ] Autenticação JWT
+- [x] Cadastro de empresas
+- [x] Listagem de colaboradores
+- [ ] Remoção de empresas
+- [ ] Remoção de colaboradores
 
 <div id="stack">
     <h2> 🪛 Tecnologias utilizadas </h2>
