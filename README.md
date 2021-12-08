@@ -18,13 +18,16 @@
     O usuário ainda, selecionar em uma lista COLABORADORES cadastrados no sistema e realizar o envio de um email[1] cuja mensagem do email, deve ser preenchida pelo usuário bem como o assunto do email deverá ser preenchido pelo próprio usuário.</p>
 </div>
 
-### Funcionalidades da aplicação
-
-- [ ] Autenticação JWT
-- [x] Cadastro de empresas
-- [x] Listagem de colaboradores
-- [ ] Remoção de empresas
-- [ ] Remoção de colaboradores
+<div id="methods">
+    <h2> 🗺️ Funcionalidades da aplicação</h2>
+    <ul>
+        <h3> ... Autenticação JWT </h3>
+        <h3> ✔️ Cadastro de empresas</h3>
+        <h3> ✔️ Listagem de colaboradores</h3>
+        <h3> ... Remoção de empresas</h3>
+        <h3> ... Remoção de colaboradores</h3>
+    </ul>
+</div>
 
 <div id="stack">
     <h2> 🪛 Tecnologias utilizadas </h2>
