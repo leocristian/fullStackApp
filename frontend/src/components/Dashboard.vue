@@ -1,0 +1,48 @@
+<template>
+    <div class="container mt-2">
+        
+        <h1>Empresas cadastradas</h1>
+        <b-button v-on:click="newCompany" variant="outline-primary">Cadastrar empresa</b-button>
+        
+        <div v-for="(company, index) in allCompanies" :key="index">
+            <b-card :title="company.name">
+                <!-- <b-card-text>Endereço</b-card-text> -->
+                <b-card-text>{{ company.site }}</b-card-text>
+                <!-- <b-card-text>Área de atuação</b-card-text> -->
+                <!-- <b-card-text>Contato</b-card-text> -->
+                <b-button variant="outline-secondary" v-on:click="showProfile(company._id)">Ver perfil</b-button>
+                <b-button variant="outline-danger">Excluir empresa</b-button>
+            </b-card>
+        </div>
+    </div>
+</template>
+
+<script>
+import api from "../services/api"
+// import router from "../main"
+
+export default {
+  data() {
+    return {
+      allCompanies: [],
+    }
+  },
+  created(){
+      api.get("/dashboard").then((response) => {
+          this.allCompanies = response.data
+      })
+  },
+  methods: {
+      showProfile(companyID) {
+            this.$router.push(`/companyProfile/${companyID}`)
+      },
+      newCompany() {
+          this.$router.push("/createCompany")
+      }
+  }
+}
+</script>
+
+<style>
+
+</style>

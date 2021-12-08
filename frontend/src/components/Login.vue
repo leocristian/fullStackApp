@@ -12,7 +12,7 @@
                 type="email"
                 placeholder="joaosilva@email.com"
                 autocomplete="off"
-                v-model="form.email"
+                v-model="user.email"
               ></b-form-input>
             </b-form-group>
  
@@ -28,15 +28,15 @@
                 id="password"
                 type="password"
                 placeholder="Digite sua senha"
-                v-model="form.password"
+                v-model="user.password"
               ></b-form-input>
             </b-form-group>
  
-            <b-button
+            <b-button v-on:click="login"
               type="button"
               variant="primary"
               block
-              @click="login">
+            >
               <i class="fas fa-sign-in-alt"></i> Entrar
             </b-button>
  
@@ -55,12 +55,13 @@
 </template>
  
 <script>
+import api from "../services/api"
+// import router from "../main"
 
-const url = "http://localhost:8000/login"
 export default {
   data() {
     return {
-      form: {
+      user: {
         email: "",
         password: ""
       }
@@ -70,9 +71,10 @@ export default {
     login() {
         // Enviar dados para requisição
         alert('oi')
-        this.$http.post(url, this.form)
+        api.post("/login", this.user).then(() => {
+            this.$router.push("/dashboard")
+        })
     },
- 
     register() {},
  
   }
