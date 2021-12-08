@@ -21,11 +21,11 @@
 <div id="methods">
     <h2> 🗺️ Funcionalidades da aplicação</h2>
     <ul>
-        <h3> ... Autenticação JWT </h3>
-        <h3> ✔️ Cadastro de empresas</h3>
-        <h3> ✔️ Listagem de colaboradores</h3>
-        <h3> ... Remoção de empresas</h3>
-        <h3> ... Remoção de colaboradores</h3>
+        <p> ... Autenticação JWT </p>
+        <p> ✔️ Cadastro de empresas</p>
+        <p> ✔️ Listagem de colaboradores</p>
+        <p> ... Remoção de empresas</p>
+        <p> ... Remoção de colaboradores</p>
     </ul>
 </div>
 
