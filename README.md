@@ -18,8 +18,12 @@
     O usuário ainda, selecionar em uma lista COLABORADORES cadastrados no sistema e realizar o envio de um email[1] cuja mensagem do email, deve ser preenchida pelo usuário bem como o assunto do email deverá ser preenchido pelo próprio usuário.</p>
 </div>
 
-<div id="routes">
-    <h2> 🗺️ Rotas da APlicação</h2>
+<div id="methods">
+    <h2> 🗺️ Funcionalidades da aplicação</h2>
+    <ul>
+        <li> ✔️ Cadastro de empresas</li>
+        <li> ✔️ Listagem de colaboradores</li>
+    </ul>
 </div>
 
 <div id="stack">
