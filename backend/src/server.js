@@ -12,15 +12,21 @@ const companyController = new CompanyController()
 
 const port = 8000
 
+server.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://localhost:8080");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
 
 server.post("/login", (req, res) => {
-    const { username, password } = req.body
+    const { email, password } = req.body
 
-    console.log(username)
+    console.log(email)
 
-    // Autenticar usuário
+    return res.redirect("/dashboard")
 
 })
 
@@ -30,10 +36,10 @@ server.get("/dashboard", async (req, res) => {
     res.send(allCompanies)
 })
 
-server.get("/dashboard/companyProfile/:companyID", async (req, res) => {
+server.get("/companyProfile/:companyID", async (req, res) => {
     const companyID = req.params.companyID
     console.log(companyID);
-    const colaborators = await colaboratorController.read()
+    const colaborators = await colaboratorController.read(companyID)
 
     res.send(colaborators)
 })

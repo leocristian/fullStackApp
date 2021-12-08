@@ -26,7 +26,7 @@ class ColaboratorController {
     }
     async read(companyID) {
         try {
-            const colaborators = await collection.find({ companyID: companyID }).toArray()
+            const colaborators = await collection.find({ }).toArray()
 
             return colaborators
         } catch (error) {
