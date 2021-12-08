@@ -56,13 +56,14 @@ server.post("/createCompany", async (req, res) => {
     return res.sendStatus(200)
 })
 
-server.post("/dashboard/companyProfile/:companyID/createColaborator", async (req, res) => {
-    const { name, surname, email, role, tel } = req.body
-    const companyID = req.params.companyID
-
+server.post("/companyProfile/:companyID/createColaborator", async (req, res) => {
+    const { name, surname, email, role, tel, companyID } = req.body
+    
     const newColaborator = new Colaborator(name, surname, email, role, tel, companyID)
     
-    await colaboratorController.create(newColaborator)
+    await colaboratorController.create(newColaborator).then(() => {
+        console.log(`${newColaborator.name} (${newColaborator.companyID})`);
+    })
     
     return res.sendStatus(200)
 })
