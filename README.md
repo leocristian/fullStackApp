@@ -26,7 +26,7 @@
         <p> ✔️ Listagem de empresas</p>
         <p> ✔️ Cadastro de colaboradores</p>
         <p> ✔️ Listagem de colaboradores</p>
-        <p> ... Envio de email</p>
+        <p> ✔️ Envio de email</p>
         <p> ... Remoção de empresas</p>
         <p> ... Remoção de colaboradores</p>
     </ul>
