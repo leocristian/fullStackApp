@@ -101,6 +101,7 @@ export default {
         // Enviar dados para requisição
         api.post("/companyProfile/:companyID/createColaborator", this.newColaborator).then(() => {
             alert("Colaborador criado com sucesso!")
+            this.$router.go(-1)
         }).catch((error) => {
             alert(error)
         })

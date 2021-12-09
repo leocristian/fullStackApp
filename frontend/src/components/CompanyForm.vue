@@ -105,6 +105,7 @@ export default {
         // Enviar dados para requisição
         api.post("/createCompany", this.newCompany).then(() => {
             alert("Empresa cadastrada com sucesso!")
+            this.$router.go(-1)
         })
     },
     register() {},

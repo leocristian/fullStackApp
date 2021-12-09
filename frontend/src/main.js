@@ -8,6 +8,7 @@ import Dashboard from "./components/Dashboard.vue"
 import CompanyProfile from "./components/CompanyProfile.vue"
 import CompanyForm from "./components/CompanyForm.vue"
 import ColaboratorForm from "./components/ColaboratorForm.vue"
+import WarningDelete from "./components/WarningDelete.vue"
 
 import { BootstrapVue } from 'bootstrap-vue'
 
@@ -25,7 +26,8 @@ const router = new VueRouter({
     { path: "/dashboard", component: Dashboard},
     { path: "/companyProfile/:id", component: CompanyProfile},
     { path: "/createCompany", component: CompanyForm},
-    { path: "/companyProfile/:companyID/createColaborator", component: ColaboratorForm}
+    { path: "/companyProfile/:companyID/createColaborator", component: ColaboratorForm},
+    { path: "/companyProfile/:companyID/deleteColaborator/:colaboratorID", component: WarningDelete}
   ]
 })
 

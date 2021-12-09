@@ -11,7 +11,7 @@
                 <!-- <b-card-text>Área de atuação</b-card-text> -->
                 <!-- <b-card-text>Contato</b-card-text> -->
                 <b-button variant="outline-secondary" v-on:click="showProfile(company._id)">Ver perfil</b-button>
-                <b-button variant="outline-danger">Excluir empresa</b-button>
+                <b-button v-on:click="deleteCompany(index)" variant="outline-danger" style="margin-left: 800px;">Excluir empresa</b-button>
             </b-card>
         </div>
     </div>

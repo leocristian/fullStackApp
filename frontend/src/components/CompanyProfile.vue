@@ -1,16 +1,18 @@
 <template>
     <div class="container md-2">
 
-        <h2 class="text-center mb-5 title-login">Lista de colaboradores</h2>
+        <h2 v-if="colaborators.length == 0" class="text-center mb-5 title-login">Empresa não possui colaboradores</h2>
+
+        <h2 v-else class="text-center mb-5 title-login">Lista de colaboradores</h2>
         <!-- <button type="button" class="btn" @click="showModal">Novo colaborador</button> -->
-        <b-button v-on:click="newColaborator" variant="outline-primary" style="margin-left: 920px;">Novo colaborador</b-button>
+        <b-button v-on:click="createColaborator" variant="outline-primary" style="margin-left: 920px;">Novo colaborador</b-button>
         <div v-for="(colaborator, index) in colaborators" :key="index">
             <b-card :title="colaborator.name">
                 <b-card-text>Email: {{ colaborator.email }}</b-card-text>
                 <b-card-text>Ára de atuação: {{ colaborator.role }}</b-card-text>
                 <b-card-text>Contato: {{ colaborator.tel }}</b-card-text>
                 <b-button variant="outline-primary">Enviar Email</b-button>
-                <b-button variant="outline-danger" style="margin-left: 780px;">Excluir colaborador</b-button>
+                <b-button v-on:click="deleteColaborator(index)" variant="outline-danger" style="margin-left: 780px;">Excluir colaborador</b-button>
             </b-card>
         </div>
     </div>
@@ -32,9 +34,21 @@
             })
         },
         methods: {
-            newColaborator() {
+            createColaborator() {
                 this.$router.push(this.companyID + "/createColaborator")
+            },
+            deleteColaborator(index) {
 
+                var colaborator = this.colaborators[index]
+
+                console.log({ colaborator })
+                // this.$router.push(this.companyID + `/deleteColaborator/${colaborator._id}`)
+                api.post(`/companyProfile/${this.companyID} /deleteColaborator/${colaborator._id}`).then(() => {
+                    alert("Colaborador deletado com sucesso!")
+                    this.$router.go()
+                }).catch(() => {
+                    alert("Erro ao deletar colaborador!")
+                })
             }
         }
     }

@@ -1,5 +1,5 @@
 
-const { MongoClient } = require('mongodb')
+const { MongoClient, ObjectId } = require('mongodb')
 const url = "mongodb://localhost:27017/"
 
 const client = new MongoClient(url)
@@ -31,6 +31,15 @@ class ColaboratorController {
             return colaborators
         } catch (error) {
             return error
+        }
+    }
+    async destroy(colaboratorID) {
+        try {
+            // const colaborator = await collection.findOne({ "_id": ObjectId(colaboratorID) })
+            // console.log("encontrou: " + colaborator.name);
+            await collection.deleteOne({ "_id": ObjectId(colaboratorID) })
+        } catch (error) {
+            console.log(error)
         }
     }
 }

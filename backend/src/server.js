@@ -68,4 +68,12 @@ server.post("/companyProfile/:companyID/createColaborator", async (req, res) => 
     return res.sendStatus(200)
 })
 
+server.post("/companyProfile/:companyID/deleteColaborator/:colaboratorID", async (req, res) => {
+
+    const colaboratorID = req.params.colaboratorID
+
+    await colaboratorController.destroy(colaboratorID)
+    
+    return res.sendStatus(200)
+})
 server.listen(port, ()=>{ console.log(`Server is running (http://localhost:${port})`) })
