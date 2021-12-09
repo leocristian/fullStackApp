@@ -12,6 +12,7 @@
                 <b-card-text>Ára de atuação: {{ colaborator.role }}</b-card-text>
                 <b-card-text>Contato: {{ colaborator.tel }}</b-card-text>
                 <b-button v-on:click="sendMail(colaborator._id)" variant="outline-primary">Enviar Email</b-button>
+                <b-button class="btn btn-outline-warning" variant="outline-secondary" style="margin-left: 20px;" v-on:click="editProfile(company._id)">Editar perfil</b-button>
                 <b-button v-on:click="deleteColaborator(index)" variant="outline-danger" style="margin-left: 780px;">Excluir colaborador</b-button>
             </b-card>
         </div>
