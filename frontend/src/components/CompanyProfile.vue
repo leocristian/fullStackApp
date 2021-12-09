@@ -11,7 +11,7 @@
                 <b-card-text>Email: {{ colaborator.email }}</b-card-text>
                 <b-card-text>Ára de atuação: {{ colaborator.role }}</b-card-text>
                 <b-card-text>Contato: {{ colaborator.tel }}</b-card-text>
-                <b-button variant="outline-primary">Enviar Email</b-button>
+                <b-button v-on:click="sendMail(colaborator._id)" variant="outline-primary">Enviar Email</b-button>
                 <b-button v-on:click="deleteColaborator(index)" variant="outline-danger" style="margin-left: 780px;">Excluir colaborador</b-button>
             </b-card>
         </div>
@@ -23,7 +23,10 @@
 
     export default {
         data() {
-            return { colaborators: [], companyID: this.$route.params.id }
+            return { 
+                colaborators: [], 
+                companyID: this.$route.params.id 
+            }
         },
         created() {
             console.log("company id: " + this.companyID)
@@ -43,12 +46,15 @@
 
                 console.log({ colaborator })
                 // this.$router.push(this.companyID + `/deleteColaborator/${colaborator._id}`)
-                api.post(`/companyProfile/${this.companyID} /deleteColaborator/${colaborator._id}`).then(() => {
+                api.post(`/companyProfile/${this.companyID}/deleteColaborator/${colaborator._id}`).then(() => {
                     alert("Colaborador deletado com sucesso!")
                     this.$router.go()
                 }).catch(() => {
                     alert("Erro ao deletar colaborador!")
                 })
+            },
+            sendMail(colaboratorID) {
+               this.$router.push(`${this.companyID}/sendEmail/${colaboratorID}`)
             }
         }
     }
