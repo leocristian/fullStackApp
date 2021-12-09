@@ -49,6 +49,13 @@ server.get("/companyProfile/:companyID", async (req, res) => {
     res.send(colaborators)
 })
 
+server.delete("/dashboard/deleteCompany/:companyID", async (req, res) => {
+
+    const companyID = req.params.companyID
+
+    console.log(companyID);
+    await companyController.destroy(companyID)
+})
 
 server.post("/createCompany", async (req, res) => {
     const { name, address, site, area, tel } = req.body

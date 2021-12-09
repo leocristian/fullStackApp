@@ -40,3 +40,7 @@ Content-Type: application/json
 	"tel": "123-456",
 	"role": "T.I"
 }
+
+###
+
+DELETE  http://localhost:8000/dashboard/deleteCompany/61ae92ccd62255809b904580

@@ -1,7 +1,10 @@
-const { MongoClient } = require('mongodb')
+const { MongoClient, ObjectId } = require('mongodb')
+const ColaboratorController = require('./ColaboratorController')
 const url = "mongodb://localhost:27017/"
 
 const client = new MongoClient(url)
+
+const colaboratorController = new ColaboratorController()
 
 client.connect()
 
@@ -20,8 +23,6 @@ class CompanyController {
         } catch (error) {
             return false
         }
-    
-       
     }
 
     async readAll() {
@@ -31,6 +32,26 @@ class CompanyController {
             return companies
         } catch (error) {
             return error
+        }
+    }
+    async destroy(companyID) {
+        try {
+            const colaborators = await colaboratorController.read(companyID)
+            
+            if (colaborators.length == 0) {
+                console.log("array vazio, deletar empresa");
+                await collection.deleteOne({ "_id": ObjectId(companyID) }).then(() => {
+                    console.log("Empresa deletada!");
+                })
+            } else {
+                console.log("deletar colaborators antes!");
+                await colaboratorController.destroyAll(companyID)
+                await collection.deleteOne({ "_id": ObjectId(companyID) }).then(() => {
+                    console.log("Empresa deletada!");
+                })
+            }
+        } catch (error) {
+            console.log(error);
         }
     }
 }

@@ -50,6 +50,15 @@ class ColaboratorController {
             console.log(error)
         }
     }
+    async destroyAll(companyID) {
+        try {
+            await collection.deleteMany({ companyID: companyID}).then(() => {
+                console.log("colaboradores deletados!");
+            })
+        }catch(error) {
+            console.log(error);
+        }
+    }
 }
 
 module.exports = ColaboratorController
