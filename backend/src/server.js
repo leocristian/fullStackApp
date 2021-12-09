@@ -2,6 +2,9 @@
 const express = require("express")
 const server = express()
 
+const UserController = require("./controllers/UserController")
+const userController = new UserController()
+
 const ColaboratorController = require("./controllers/ColaboratorController")
 const colaboratorController = new ColaboratorController()
 
@@ -14,24 +17,44 @@ const mailController = new MailController()
 const Colaborator = require("./models/Colaborator")
 const Company = require("./models/Company")
 const Mail = require("./models/Mail")
+const User = require("./models/User")
 
 const port = 8000
 
 server.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "http://localhost:8080");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
     next();
   });
 
 server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
 
-server.post("/login", (req, res) => {
+server.post("/login", async (req, res) => {
     const { email, password } = req.body
 
-    console.log(email)
+    const user = await userController.readOne(email, password)
 
-    return res.redirect("/dashboard")
+    if(!user){
+        res.sendStatus(404)
+    }else{ 
+        res.redirect("/dashboard")
+    }
+})
+
+server.post("/signup", async (req, res) => {
+    const { email, password } = req.body
+    
+    const newUser = new User(email, password)
+
+    const user = await userController.create(newUser)
+
+    if(!user){
+        res.sendStatus(404)
+    }else{ 
+        res.sendStatus(200)
+    }
 
 })
 
@@ -55,6 +78,8 @@ server.delete("/dashboard/deleteCompany/:companyID", async (req, res) => {
 
     console.log(companyID);
     await companyController.destroy(companyID)
+
+    return res.sendStatus(200)
 })
 
 server.post("/createCompany", async (req, res) => {
@@ -80,7 +105,7 @@ server.post("/companyProfile/:companyID/createColaborator", async (req, res) => 
     return res.sendStatus(200)
 })
 
-server.post("/companyProfile/:companyID/deleteColaborator/:colaboratorID", async (req, res) => {
+server.delete("/companyProfile/:companyID/deleteColaborator/:colaboratorID", async (req, res) => {
 
     const colaboratorID = req.params.colaboratorID
 

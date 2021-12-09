@@ -22,6 +22,7 @@
     <h2> 🗺️ Funcionalidades da aplicação</h2>
     <ul>
         <p> ... Autenticação JWT </p>
+        <p> ✔️ Login/Cadastro de usuário</p>
         <p> ✔️ Cadastro de empresas</p>
         <p> ✔️ Listagem de empresas</p>
         <p> ✔️ Cadastro de colaboradores</p>

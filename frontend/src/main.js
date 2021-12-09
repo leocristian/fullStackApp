@@ -4,6 +4,7 @@ import transition from "transition"
 
 import App from './App.vue'
 import Login from "./components/Login.vue"
+import Signup from "./components/Signup.vue"
 import Dashboard from "./components/Dashboard.vue"
 import CompanyProfile from "./components/CompanyProfile.vue"
 import CompanyForm from "./components/CompanyForm.vue"
@@ -22,6 +23,7 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [
     { path: "/login", component: Login },
+    { path: "/signup", component: Signup },
     { path: "/", redirect: "/login"},
     { path: "/dashboard", component: Dashboard},
     { path: "/companyProfile/:id", component: CompanyProfile},

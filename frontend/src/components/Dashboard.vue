@@ -11,7 +11,7 @@
                 <!-- <b-card-text>Área de atuação</b-card-text> -->
                 <!-- <b-card-text>Contato</b-card-text> -->
                 <b-button variant="outline-secondary" v-on:click="showProfile(company._id)">Ver perfil</b-button>
-                <b-button v-on:click="deleteCompany(index)" variant="outline-danger" style="margin-left: 800px;">Excluir empresa</b-button>
+                <b-button v-on:click="deleteCompany(company._id)" variant="outline-danger" style="margin-left: 800px;">Excluir empresa</b-button>
             </b-card>
         </div>
     </div>
@@ -38,6 +38,15 @@ export default {
       },
       newCompany() {
           this.$router.push("/createCompany")
+      },
+      deleteCompany(companyID) {
+          api.delete(`dashboard/deleteCompany/${companyID}`).then((response) => {
+              alert("Empresa deletada com sucesso!")
+              console.log(response);
+              this.$router.go()
+          }).catch((error) => {
+              console.log(error);
+          })
       }
   }
 }

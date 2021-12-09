@@ -46,7 +46,7 @@
 
                 console.log({ colaborator })
                 // this.$router.push(this.companyID + `/deleteColaborator/${colaborator._id}`)
-                api.post(`/companyProfile/${this.companyID}/deleteColaborator/${colaborator._id}`).then(() => {
+                api.delete(`/companyProfile/${this.companyID}/deleteColaborator/${colaborator._id}`).then(() => {
                     alert("Colaborador deletado com sucesso!")
                     this.$router.go()
                 }).catch(() => {

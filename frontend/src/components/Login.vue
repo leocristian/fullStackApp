@@ -70,12 +70,15 @@ export default {
   methods: {
     login() {
         // Enviar dados para requisição
-        alert('oi')
         api.post("/login", this.user).then(() => {
             this.$router.push("/dashboard")
+        }).catch(() => {
+          alert("Usuário não encontrado")
         })
     },
-    register() {},
+    register() {
+      this.$router.push("/signup")
+    },
  
   }
 }
