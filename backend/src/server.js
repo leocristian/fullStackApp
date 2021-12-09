@@ -6,9 +6,14 @@ const ColaboratorController = require("./controllers/ColaboratorController")
 const colaboratorController = new ColaboratorController()
 
 const CompanyController = require("./controllers/CompanyController")
+const companyController = new CompanyController()
+
+const MailController = require("./controllers/MailController")
+const mailController = new MailController()
+
 const Colaborator = require("./models/Colaborator")
 const Company = require("./models/Company")
-const companyController = new CompanyController()
+const Mail = require("./models/Mail")
 
 const port = 8000
 
@@ -74,6 +79,17 @@ server.post("/companyProfile/:companyID/deleteColaborator/:colaboratorID", async
 
     await colaboratorController.destroy(colaboratorID)
     
+    return res.sendStatus(200)
+})
+
+server.post("/companyProfile/:companyID/sendEmail/:colaboratorID", async(req, res) => {
+    const { subject, message, colaboratorID } = req.body
+
+    console.log("User encontrado: " + colaboratorID);
+    const mail = new Mail(subject, message, colaboratorID)
+
+    await mailController.sendEmail(mail)
+
     return res.sendStatus(200)
 })
 server.listen(port, ()=>{ console.log(`Server is running (http://localhost:${port})`) })

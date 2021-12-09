@@ -33,6 +33,14 @@ class ColaboratorController {
             return error
         }
     }
+    async readOne(colaboratorID) {
+        try {
+            const colaborator = await collection.findOne({ "_id": ObjectId(colaboratorID) })
+            return colaborator.email
+        } catch (error) {
+            return error
+        }
+    }
     async destroy(colaboratorID) {
         try {
             // const colaborator = await collection.findOne({ "_id": ObjectId(colaboratorID) })
