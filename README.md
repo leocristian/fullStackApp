@@ -21,14 +21,18 @@
 <div id="methods">
     <h2> 🗺️ Funcionalidades da aplicação</h2>
     <ul>
-        <p> ... Autenticação JWT </p>       | <p> ✔️ Remoção de empresas</p>
-        <p> ✔️ Login/Cadastro de usuário</p> | <p> ✔️ Remoção de colaboradores</p>
-        <p> ✔️ Recuperação de senha</p>      | <p> ... Edição de empresas</p>
-        <p> ✔️ Cadastro de empresas</p>      | <p> ... Edição de colaborador</p>
+        <p> ... Autenticação JWT </p>
+        <p> ✔️ Login/Cadastro de usuário</p>
+        <p> ... Recuperação de senha</p>
+        <p> ✔️ Cadastro de empresas</p>
         <p> ✔️ Listagem de empresas</p> 
         <p> ✔️ Cadastro de colaboradores</p>
         <p> ✔️ Listagem de colaboradores</p>
         <p> ✔️ Envio de email</p>
+        <p> ✔️ Remoção de empresas</p>
+        <p> ✔️ Remoção de colaboradores</p>
+        <p> ... Edição de empresas</p>
+        <p> ... Edição de colaborador</p>
     </ul>
 </div>
 
