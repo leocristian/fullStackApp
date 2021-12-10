@@ -28,7 +28,20 @@
                 v-model="newUser.password"
               ></b-form-input>
             </b-form-group>
+
+          <b-form-group
+              label="Confirmar senha"
+              label-for="confirmPassword"
+            >
  
+              <b-form-input
+                id="confirmPassword"
+                type="password"
+                placeholder="Repita a senha"
+                v-model="confirmPassword"
+              ></b-form-input>
+            </b-form-group>
+
             <b-button v-on:click="register"
               type="button"
               variant="primary"
@@ -52,10 +65,11 @@
 
  export default {
      data() {
-         return { newUser: { email: "", password: "" }}
+         return { newUser: { email: "", password: ""}, confirmPassowrd: "" }
      },
      methods: {
          register(){
+           if (this.newUser.password === this.confirmPassword) {
              api.post("/signup", this.newUser).then((response) => {
                 alert("Usuário cadastrado com sucesso!")
                 console.log(response);
@@ -64,6 +78,9 @@
              }).catch((error) => {
                  console.log(error);
              })
+           } else {
+             alert("Senha não confere!")
+           }
          },
          returnToLogin() {
              this.$router.go(-1)
