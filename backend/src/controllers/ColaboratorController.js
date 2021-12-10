@@ -33,10 +33,18 @@ class ColaboratorController {
             return error
         }
     }
+    async update(current, newColaborator) {
+        await collection.replaceOne(
+            { "_id": ObjectId(current)}, newColaborator).then(()=> {
+            console.log("Colaborador atualizado");
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
     async readOne(colaboratorID) {
         try {
             const colaborator = await collection.findOne({ "_id": ObjectId(colaboratorID) })
-            return colaborator.email
+            return colaborator
         } catch (error) {
             return error
         }

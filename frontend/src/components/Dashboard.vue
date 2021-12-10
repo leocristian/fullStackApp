@@ -1,7 +1,9 @@
 <template>
     <div class="container mt-2">
         
-        <h1>Empresas cadastradas</h1>
+        <h2 v-if="allCompanies.length == 0" class="text-center mb-5 title-login">Não existem empresas cadastradas</h2>
+
+        <h2 v-else class="text-center mb-5 title-login">Lista de empresas</h2>
         <b-button v-on:click="newCompany" variant="outline-primary">Cadastrar empresa</b-button>
         
         <div v-for="(company, index) in allCompanies" :key="index">

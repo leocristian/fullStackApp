@@ -12,8 +12,8 @@ class MailController {
         this.transporter = this.nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: process.env.EMAIL,
-                pass: process.env.PASSWORD
+                user: "leonardocristian@ufpi.edu.br",
+                pass: "0804100160leo"
             }
 
         })

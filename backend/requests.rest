@@ -3,8 +3,8 @@ POST http://localhost:8000/login
 Content-Type: application/json
 
 {
-	"email": "admin",
-	"password": "admin"
+	"email": "leo@gmail.com",
+	"password": "1234"
 }
 
 ###
@@ -41,6 +41,31 @@ Content-Type: application/json
 	"role": "T.I"
 }
 
+###
+
+PUT http://localhost:8000/dashboard/editCompany/61b2946e8b56e6e546d7212d
+Content-Type: application/json
+
+{
+	"newName": "aaaa nome",
+	"newAddress": "novo address",
+	"newArea": "nova area",
+	"newSite": "novo site",
+	"newTel": "novo telefone"
+}
+
+###
+
+PUT http://localhost:8000/companyProfile/61b2946e8b56e6e546d7212d/editColaborator/61b29ee3196dfbd2f8631ce1
+Content-Type: application/json
+
+{
+	"newName": "ssssss Cristian",
+	"newSurname": "ssss Lopes",
+	"newEmail": "sss@gmail.com",
+	"newTel": "sss-456",
+	"newRole": "sss.I"
+}
 ###
 
 DELETE  http://localhost:8000/dashboard/deleteCompany/61ae92ccd62255809b904580

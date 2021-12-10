@@ -2,6 +2,9 @@
 const express = require("express")
 const server = express()
 
+const jwt = require("jsonwebtoken")
+const authConfig = require("./config/auth")
+
 const UserController = require("./controllers/UserController")
 const userController = new UserController()
 
@@ -32,13 +35,21 @@ server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
 
 server.post("/login", async (req, res) => {
+
     const { email, password } = req.body
 
     const user = await userController.readOne(email, password)
 
     if(!user){
         res.sendStatus(404)
-    }else{ 
+    }else{
+
+        user.password = undefined
+        const idLogged = user._id
+        console.log("id logado: " + idLogged);
+        console.log("Secret: " + authConfig.secret);
+        // const token = jwt.sign({ id: idLogged }, authConfig.secret)
+
         res.redirect("/dashboard")
     }
 })
@@ -72,16 +83,6 @@ server.get("/companyProfile/:companyID", async (req, res) => {
     res.send(colaborators)
 })
 
-server.delete("/dashboard/deleteCompany/:companyID", async (req, res) => {
-
-    const companyID = req.params.companyID
-
-    console.log(companyID);
-    await companyController.destroy(companyID)
-
-    return res.sendStatus(200)
-})
-
 server.post("/createCompany", async (req, res) => {
     const { name, address, site, area, tel } = req.body
     
@@ -93,6 +94,30 @@ server.post("/createCompany", async (req, res) => {
     return res.sendStatus(200)
 })
 
+server.put("/dashboard/editCompany/:companyID", async (req, res) => {
+    const { newName, newAddress, newSite, newArea, newTel } = req.body
+    const companyID = req.params.companyID
+
+    const newCompany = new Company(newName, newAddress, newSite, newArea, newTel)
+
+    const company = await companyController.readOne(companyID)
+
+    await companyController.update(company._id, newCompany)
+
+    console.log({company});
+})
+server.delete("/dashboard/deleteCompany/:companyID", async (req, res) => {
+
+    const companyID = req.params.companyID
+
+    console.log(companyID);
+    await companyController.destroy(companyID)
+
+    return res.sendStatus(200)
+})
+
+
+
 server.post("/companyProfile/:companyID/createColaborator", async (req, res) => {
     const { name, surname, email, role, tel, companyID } = req.body
     
@@ -103,6 +128,19 @@ server.post("/companyProfile/:companyID/createColaborator", async (req, res) => 
     })
     
     return res.sendStatus(200)
+})
+
+server.put("/companyProfile/:companyID/editColaborator/:colaboratorID", async (req, res) => {
+    const { newName, newSurname, newEmail, newRole, newTel } = req.body
+    const { companyID, colaboratorID } = req.params
+
+    const newColaborator = new Colaborator(newName, newSurname, newEmail, newTel, newRole, companyID)
+
+    const colaborator = await colaboratorController.readOne(colaboratorID)
+
+    await colaboratorController.update(colaborator._id, newColaborator)
+
+    console.log({colaborator});
 })
 
 server.delete("/companyProfile/:companyID/deleteColaborator/:colaboratorID", async (req, res) => {

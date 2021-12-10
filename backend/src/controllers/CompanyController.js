@@ -24,7 +24,24 @@ class CompanyController {
             return false
         }
     }
+    async readOne(companyID) {
+        try {
+            const company = await collection.findOne({ "_id": ObjectId(companyID) })
 
+            return company
+        } catch (error) {
+            return error
+        }
+    }
+    async update(current, newCompany) {
+        await collection.replaceOne(
+            { "_id": ObjectId(current)}, newCompany).then(()=> {
+            console.log("Empresa atualizada");
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+    
     async readAll() {
         try {
             const companies = await collection.find({ }).toArray()
