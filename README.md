@@ -18,7 +18,7 @@
     O usuário ainda, selecionar em uma lista COLABORADORES cadastrados no sistema e realizar o envio de um email[1] cuja mensagem do email, deve ser preenchida pelo usuário bem como o assunto do email deverá ser preenchido pelo próprio usuário.</p>
 </div>
 
-<div id="methods">
+<div id="features">
     <h2> 🗺️ Funcionalidades da aplicação</h2>
     <ul>
         <p> ... Autenticação JWT </p>
