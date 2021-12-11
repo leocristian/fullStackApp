@@ -6,10 +6,12 @@ import App from './App.vue'
 import Login from "./components/Login.vue"
 import Signup from "./components/Signup.vue"
 import Dashboard from "./components/Dashboard.vue"
-import CompanyProfile from "./components/CompanyProfile.vue"
-import CompanyForm from "./components/CompanyForm.vue"
-import ColaboratorForm from "./components/ColaboratorForm.vue"
+import CompanyProfile from "./components/company/CompanyProfile.vue"
+import CompanyForm from "./components/company/CompanyForm.vue"
+import ColaboratorForm from "./components/colaborator/ColaboratorForm.vue"
 import SendEmail from "./components/SendEmail.vue"
+import EditCompany from "./components/company/EditCompany.vue"
+import EditColaborator from "./components/colaborator/EditColaborator.vue"
 
 import { BootstrapVue } from 'bootstrap-vue'
 
@@ -29,7 +31,9 @@ const router = new VueRouter({
     { path: "/companyProfile/:id", component: CompanyProfile},
     { path: "/createCompany", component: CompanyForm},
     { path: "/companyProfile/:companyID/createColaborator", component: ColaboratorForm},
-    { path: "/companyProfile/:companyID/sendEmail/:colaboratorID", component: SendEmail}
+    { path: "/companyProfile/:companyID/sendEmail/:colaboratorID", component: SendEmail},
+    { path: "/editCompany/:companyID", component: EditCompany },
+    { path: "/companyProfile/:companyID/editColaborator/:colaboratorID", component: EditColaborator}
   ]
 })
 

@@ -12,9 +12,9 @@
                 <b-card-text>{{ company.site }}</b-card-text>
                 <!-- <b-card-text>Área de atuação</b-card-text> -->
                 <!-- <b-card-text>Contato</b-card-text> -->
-                <b-button variant="outline-secondary" v-on:click="showProfile(company._id)">Ver perfil</b-button>
+                <b-button variant="outline-secondary" v-on:click="showProfile(company._id)">Listar Colaboradores</b-button>
                 <b-button class="btn btn-outline-warning" variant="outline-secondary" style="margin-left: 20px;" v-on:click="editProfile(company._id)">Editar perfil</b-button>
-                <b-button v-on:click="deleteCompany(company._id)" variant="outline-danger" style="margin-left: 800px;">Excluir empresa</b-button>
+                <b-button v-on:click="deleteCompany(company._id)" variant="outline-danger" style="margin-left: 600px;">Excluir empresa</b-button>
             </b-card>
         </div>
     </div>
@@ -50,6 +50,9 @@ export default {
           }).catch((error) => {
               console.log(error);
           })
+      },
+      editProfile(companyID) {
+          this.$router.push(`/editCompany/${companyID}`)
       }
   }
 }

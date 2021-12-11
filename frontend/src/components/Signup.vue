@@ -65,18 +65,18 @@
 
  export default {
      data() {
-         return { newUser: { email: "", password: ""}, confirmPassowrd: "" }
+         return { newUser: { email: "", password: ""}, confirmPassword: "" }
      },
      methods: {
          register(){
            if (this.newUser.password === this.confirmPassword) {
              api.post("/signup", this.newUser).then((response) => {
-                alert("Usuário cadastrado com sucesso!")
-                console.log(response);
+               console.log(response);
+                alert("Usuário cadastrado com sucesso!")  
                 this.returnToLogin()
-
              }).catch((error) => {
-                 console.log(error);
+               alert("Usuário já existe!")
+                console.log(error);
              })
            } else {
              alert("Senha não confere!")

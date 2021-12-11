@@ -38,7 +38,8 @@ server.post("/login", async (req, res) => {
 
     const { email, password } = req.body
 
-    const user = await userController.readOne(email, password)
+    const userLogged = new User(email, password)
+    const user = await userController.readOne(userLogged)
 
     if(!user){
         res.sendStatus(404)
@@ -59,11 +60,13 @@ server.post("/signup", async (req, res) => {
     
     const newUser = new User(email, password)
 
-    const user = await userController.create(newUser)
-
-    if(!user){
-        res.sendStatus(404)
-    }else{ 
+    const userExists = await userController.verify(newUser)
+ 
+    if (userExists) {
+        console.log("Usuário já existe");
+        res.sendStatus(303)
+    } else {
+        const user = await userController.create(newUser)
         res.sendStatus(200)
     }
 
@@ -94,17 +97,19 @@ server.post("/createCompany", async (req, res) => {
     return res.sendStatus(200)
 })
 
-server.put("/dashboard/editCompany/:companyID", async (req, res) => {
+server.put("/editCompany/:companyID", async (req, res) => {
     const { newName, newAddress, newSite, newArea, newTel } = req.body
     const companyID = req.params.companyID
 
     const newCompany = new Company(newName, newAddress, newSite, newArea, newTel)
 
-    const company = await companyController.readOne(companyID)
-
-    await companyController.update(company._id, newCompany)
-
-    console.log({company});
+    if (await companyController.verify(newCompany)) {
+        return res.sendStatus(409) // Conflict
+    } else {
+        const company = await companyController.readOne(companyID)
+        await companyController.update(company._id, newCompany)
+        res.sendStatus(200)
+    }
 })
 server.delete("/dashboard/deleteCompany/:companyID", async (req, res) => {
 
@@ -136,11 +141,17 @@ server.put("/companyProfile/:companyID/editColaborator/:colaboratorID", async (r
 
     const newColaborator = new Colaborator(newName, newSurname, newEmail, newTel, newRole, companyID)
 
-    const colaborator = await colaboratorController.readOne(colaboratorID)
+    
+    if (await colaboratorController.verify(newColaborator)) {
+        console.log("Colaborador já existe!!");
+        return res.sendStatus(409)
+    } else{
+        const colaborator = await colaboratorController.readOne(colaboratorID)
+        await colaboratorController.update(colaborator._id, newColaborator)
+        console.log({colaborator});
+        return res.sendStatus(200)
+    }
 
-    await colaboratorController.update(colaborator._id, newColaborator)
-
-    console.log({colaborator});
 })
 
 server.delete("/companyProfile/:companyID/deleteColaborator/:colaboratorID", async (req, res) => {

@@ -33,6 +33,14 @@ class ColaboratorController {
             return error
         }
     }
+    async verify(colaborator) {
+        try {
+            const result = await collection.findOne({ email: colaborator.email})
+            return result
+        } catch (error) {
+            return error
+        }
+    }
     async update(current, newColaborator) {
         await collection.replaceOne(
             { "_id": ObjectId(current)}, newColaborator).then(()=> {

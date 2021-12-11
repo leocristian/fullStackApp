@@ -33,6 +33,14 @@ class CompanyController {
             return error
         }
     }
+    async verify(company) {
+        try {
+            const result = await collection.findOne({ name: company.name})
+            return result
+        } catch (error) {
+            return error
+        }
+    }
     async update(current, newCompany) {
         await collection.replaceOne(
             { "_id": ObjectId(current)}, newCompany).then(()=> {

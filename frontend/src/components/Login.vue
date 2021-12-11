@@ -10,24 +10,19 @@
               <b-form-input
                 id="email"
                 type="email"
-                placeholder="joaosilva@email.com"
                 autocomplete="off"
                 v-model="user.email"
               ></b-form-input>
             </b-form-group>
  
             <b-form-group
+              label="Senha"
               label-for="password"
             >
-              <label class="d-flex justify-content-between">
-                Senha
-                <small><a href="#">Esqueceu sua senha?</a></small>
-              </label>
  
               <b-form-input
                 id="password"
                 type="password"
-                placeholder="Digite sua senha"
                 v-model="user.password"
               ></b-form-input>
             </b-form-group>

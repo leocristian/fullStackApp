@@ -16,6 +16,7 @@ class UserController {
     async create (newUser) {
         
         try {
+
             const insert = await collection.insertOne(newUser)
 
             return insert
@@ -24,9 +25,17 @@ class UserController {
             return error
         }
     }
-    async readOne(email, password) {
+    async readOne(newUser) {
         try {
-            const user = await collection.findOne({ email: email, password: password })
+            const user = await collection.findOne({ email: newUser.email, password: newUser.password })
+            return user
+        } catch (error) {
+            return error
+        }
+    }
+    async verify(newUser) {
+        try {
+            const user = await collection.findOne({ email: newUser.email})
             return user
         } catch (error) {
             return error
