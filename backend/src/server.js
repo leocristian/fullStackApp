@@ -139,7 +139,7 @@ server.put("/companyProfile/:companyID/editColaborator/:colaboratorID", async (r
     const { newName, newSurname, newEmail, newRole, newTel } = req.body
     const { companyID, colaboratorID } = req.params
 
-    const newColaborator = new Colaborator(newName, newSurname, newEmail, newTel, newRole, companyID)
+    const newColaborator = new Colaborator(newName, newSurname, newEmail, newRole, newTel, companyID)
 
     
     if (await colaboratorController.verify(newColaborator)) {

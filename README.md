@@ -31,8 +31,8 @@
         <p> ✔️ Envio de email</p>
         <p> ✔️ Remoção de empresas</p>
         <p> ✔️ Remoção de colaboradores</p>
-        <p> ... Edição de empresas</p>
-        <p> ... Edição de colaborador</p>
+        <p> ✔️ Edição de empresas</p>
+        <p> ✔️ Edição de colaborador</p>
     </ul>
 </div>
 

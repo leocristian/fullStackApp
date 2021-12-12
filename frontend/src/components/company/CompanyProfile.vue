@@ -7,7 +7,7 @@
         <!-- <button type="button" class="btn" @click="showModal">Novo colaborador</button> -->
         <b-button v-on:click="createColaborator" variant="outline-primary" style="margin-left: 920px;">Novo colaborador</b-button>
         <div v-for="(colaborator, index) in colaborators" :key="index">
-            <b-card :title="colaborator.name">
+            <b-card :title="colaborator.name + ' ' + colaborator.surname">
                 <b-card-text>Email: {{ colaborator.email }}</b-card-text>
                 <b-card-text>Ára de atuação: {{ colaborator.role }}</b-card-text>
                 <b-card-text>Contato: {{ colaborator.tel }}</b-card-text>

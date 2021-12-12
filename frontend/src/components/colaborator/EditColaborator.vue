@@ -40,11 +40,11 @@
             </b-form-group>
 
             <b-form-group
-            label="Cargo"
-            label-for="Role"
+            label="Departamento"
+            label-for="role"
             >
               <b-form-input
-                id="Role"
+                id="role"
                 type="text"
                 autocomplete="off"
                 v-model="colaborator.newRole"

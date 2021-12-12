@@ -3,46 +3,27 @@
       <div class="col-4">
         <h2 class="text-center mb-5 title-login">Faça o login</h2>
         <b-form>
-          <b-form-group
-            label="E-mail"
-            label-for="email"
-            >
-              <b-form-input
-                id="email"
-                type="email"
-                autocomplete="off"
-                v-model="user.email"
-              ></b-form-input>
+          <b-form-group label="E-mail" label-for="email">
+              <b-form-input id="email" type="email" autocomplete="off" v-model="user.email">
+              </b-form-input>
             </b-form-group>
  
-            <b-form-group
-              label="Senha"
-              label-for="password"
-            >
- 
-              <b-form-input
-                id="password"
-                type="password"
-                v-model="user.password"
-              ></b-form-input>
+            <b-form-group label="Senha" label-for="password">
+              <!-- <label class="d-flex justify-content-between">
+                Senha
+                <small><a href="/forgetPass" >Esqueceu sua senha?</a></small>
+              </label> -->
+              <b-form-input id="password" type="password" v-model="user.password"></b-form-input>
             </b-form-group>
  
-            <b-button v-on:click="login"
-              type="button"
-              variant="primary"
-              block
-            >
-              <i class="fas fa-sign-in-alt"></i> Entrar
+            <b-button v-on:click="login" type="button" variant="primary" block>
+              Entrar
             </b-button>
  
             <hr>
  
-            <b-button
-              type="button"
-              variant="outline-secondary"
-              block
-              @click="register">
-              <i class="fas fa-user-plus"></i> Não tenho conta
+            <b-button type="button" variant="outline-secondary" block v-on:click="register">
+              Não tenho conta
             </b-button>
         </b-form>
       </div>
@@ -74,7 +55,10 @@ export default {
     register() {
       this.$router.push("/signup")
     },
- 
+    recoverPass() {
+      alert("Esqueceu senha")
+      // this.$router.push("/forgetPass")
+    }
   }
 }
 </script>
