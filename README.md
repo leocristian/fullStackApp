@@ -19,7 +19,7 @@
 	<h2>🗒️ Pré-requisitos</h2>
 	<p>Antes de executar, você deverá ter instalado as seguintes ferramentas:</p>
 	<ul>
-		<li><a href="https://nodejs.org/en/">NodeJS</a></li>
+		<li><a href="https://nodejs.org/en/">NodeJS</a> na versão 16.13.1 LTS</li>
 		<li><a href="https://vuejs.org/en/">VueJS</a></li>
    		<li><a href="https://www.mongodb.com/">MongoDB e seu cliente (MongoDB Compass Comunity).</a></li>
    		<li>Um editor de texto de sua preferência, por exemplo: <a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
