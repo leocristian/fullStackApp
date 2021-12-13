@@ -21,8 +21,8 @@
 	<ul>
 		<li><a href="https://nodejs.org/en/">NodeJS</a></li>
 		<li><a href="https://vuejs.org/en/">VueJS</a></li>
-   		<li><a href="https://www.mongodb.com/">MongoDB e seu cliente (MongoDB Compass Comunity.</a></li>
-   		<li>Um editor de texto de sua preferência, por exemplo:<a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+   		<li><a href="https://www.mongodb.com/">MongoDB e seu cliente (MongoDB Compass Comunity).</a></li>
+   		<li>Um editor de texto de sua preferência, por exemplo: <a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
 	</ul>
 </div>
 <div id="starter">
@@ -32,8 +32,8 @@
 		<li>Extraia os arquivos em uma pasta de sua preferência.</li>
 		<li>Inicie o cliente do mongodb e clique em 'connect' (o serviço iniciará na porta 27017)</li>
 		<li>Acesse a pasta backend e execute o comando 'npm install' para instalar todas as dependências</li>
-		<li>Para iniciar a API, acesse a pasta backend e execute o comando 'npm start'</li>
-		<li>Na pasta frontend, execute o comando 'npm install' para instalar as dependências</li>
+		<li>Para iniciar a API, acesse a pasta backend e execute o comando 'npm start' (o servidor iniciará na porta 8000)</li>
+		<li>Na pasta frontend, execute o comando 'npm install' para instalar suas dependências</li>
 		<li>Execute o comando 'npm run serve' para inciar a aplicação na porta 8080</li></li> 
 		<li>Por fim, acesse o endereço 'http://localhost:8080' e a aplicação estará em funcionamento</li>
 	</ul>
