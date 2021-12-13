@@ -36,6 +36,7 @@
 		<li>Na pasta frontend, execute o comando 'npm install' para instalar suas dependências</li>
 		<li>Execute o comando 'npm run serve' para inciar a aplicação na porta 8080</li></li> 
 		<li>Por fim, acesse o endereço 'http://localhost:8080' e a aplicação estará em funcionamento</li>
+		<p>Obs: Para utilizar o serviço de email, configure o SMTP da sua conta do Gmail e adicione as variáveis EMAIL e PASSWORD em um arquivo '.env' na pasta 'backend'</p>
 	</ul>
 </div>
 <div id="features">
