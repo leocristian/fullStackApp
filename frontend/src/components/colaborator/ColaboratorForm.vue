@@ -99,12 +99,17 @@ export default {
   methods: {
     createColaborator() {
         // Enviar dados para requisição
-        api.post("/companyProfile/:companyID/createColaborator", this.newColaborator).then(() => {
-            alert("Colaborador criado com sucesso!")
-            this.$router.go(-1)
-        }).catch((error) => {
-            alert(error)
-        })
+        if (this.newColaborator.name != "" && this.newColaborator.email != "") {
+          
+          api.post("/companyProfile/:companyID/createColaborator", this.newColaborator).then(() => {
+              alert("Colaborador criado com sucesso!")
+              this.$router.go(-1)
+          }).catch(() => {
+            alert("Colaborador já cadastrado!")
+          })
+        } else {
+          alert("Preencha os campos corretamente!")
+        }
     },
     register() {},
  

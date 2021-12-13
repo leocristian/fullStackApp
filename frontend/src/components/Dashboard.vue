@@ -4,9 +4,12 @@
         <h2 v-if="allCompanies.length == 0" class="text-center mb-5 title-login">Não existem empresas cadastradas</h2>
 
         <h2 v-else class="text-center mb-5 title-login">Lista de empresas</h2>
-        <b-button v-on:click="newCompany" variant="outline-primary">Cadastrar empresa</b-button>
+        <div class="container" style="margin: 20px;">
+            <b-button v-on:click="newCompany" variant="outline-primary" style="margin-left: 820px;">Cadastrar empresa</b-button>
+            <b-button v-on:click="previousPage" variant="outline-danger" style="margin-left: 15px;">Sair</b-button>
+        </div>
         
-        <div v-for="(company, index) in allCompanies" :key="index">
+        <div v-for="(company, index) in allCompanies" :key="index" style="margin-bottom: 20px;">
             <b-card :title="company.name">
                 <b-card-text>{{ company.address }}</b-card-text>
                 <b-card-text>{{ company.site }}</b-card-text>
@@ -53,6 +56,9 @@ export default {
       },
       editProfile(companyID) {
           this.$router.push(`/editCompany/${companyID}`)
+      },
+      previousPage() {
+          this.$router.go(-1)
       }
   }
 }

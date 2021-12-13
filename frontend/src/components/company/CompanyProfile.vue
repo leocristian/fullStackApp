@@ -5,7 +5,10 @@
 
         <h2 v-else class="text-center mb-5 title-login">Lista de colaboradores</h2>
         <!-- <button type="button" class="btn" @click="showModal">Novo colaborador</button> -->
-        <b-button v-on:click="createColaborator" variant="outline-primary" style="margin-left: 920px;">Novo colaborador</b-button>
+        <div class="container" style="margin: 20px;">
+            <b-button v-on:click="createColaborator" variant="outline-primary" style="margin-left: 820px;">Novo colaborador</b-button>
+            <b-button v-on:click="previousPage" variant="outline-secondary" style="margin-left: 15px;">Voltar</b-button>
+        </div>
         <div v-for="(colaborator, index) in colaborators" :key="index">
             <b-card :title="colaborator.name + ' ' + colaborator.surname">
                 <b-card-text>Email: {{ colaborator.email }}</b-card-text>
@@ -59,6 +62,9 @@
             },
             editProfile(colaboratorID) {
                 this.$router.push(`${this.companyID}/editColaborator/${colaboratorID}`)
+            },
+            previousPage() {
+                this.$router.go(-1)
             }
         }
     }

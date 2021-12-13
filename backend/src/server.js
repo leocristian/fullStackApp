@@ -91,10 +91,12 @@ server.post("/createCompany", async (req, res) => {
     
     const newCompany = new Company(name, address, site, area, tel)
 
-    const insert = await companyController.create(newCompany)
-
-    console.log(`Insert company: ${insert}`);
-    return res.sendStatus(200)
+    if (await companyController.verify(newCompany)) {
+        return res.sendStatus(409) // Conflict
+    } else {
+        const insert = await companyController.create(newCompany)
+        return res.sendStatus(200)
+    }
 })
 
 server.put("/editCompany/:companyID", async (req, res) => {
@@ -128,11 +130,13 @@ server.post("/companyProfile/:companyID/createColaborator", async (req, res) => 
     
     const newColaborator = new Colaborator(name, surname, email, role, tel, companyID)
     
-    await colaboratorController.create(newColaborator).then(() => {
-        console.log(`${newColaborator.name} (${newColaborator.companyID})`);
-    })
-    
-    return res.sendStatus(200)
+    if (await colaboratorController.verify(newColaborator)) {
+        console.log("Colaborador já existe!!");
+        return res.sendStatus(409)
+    } else{
+        await colaboratorController.create(newColaborator)
+        return res.sendStatus(200)
+    }
 })
 
 server.put("/companyProfile/:companyID/editColaborator/:colaboratorID", async (req, res) => {

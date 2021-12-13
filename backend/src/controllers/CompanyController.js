@@ -11,7 +11,7 @@ client.connect()
 const dbName = "SPEEDIO"
 const database = client.db(dbName)
 
-const collection = database.collection("company")
+const collection = database.collection("companies")
 
 class CompanyController {
    

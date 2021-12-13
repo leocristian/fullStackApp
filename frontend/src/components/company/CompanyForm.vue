@@ -78,7 +78,6 @@
               <i class="fas fa-sign-in-alt"></i> Cadastrar empresa
             </b-button>
  
- 
         </b-form>
       </div>
     </div>
@@ -103,10 +102,16 @@ export default {
   methods: {
     createCompany() {
         // Enviar dados para requisição
-        api.post("/createCompany", this.newCompany).then(() => {
-            alert("Empresa cadastrada com sucesso!")
-            this.$router.go(-1)
-        })
+        if(this.newCompany.name != "" && this.newCompany.address != "" && this.newCompany.site != "") {
+            api.post("/createCompany", this.newCompany).then(() => {
+              alert("Empresa cadastrada com sucesso!")
+              this.$router.go(-1)
+          }).catch(() => {
+            alert("Empresa já cadastrada!")
+          })
+        } else {
+          alert("Preencha os campos corretamente")
+        }
     },
     register() {},
  
