@@ -1,14 +1,15 @@
 require('dotenv').config()
 
+const ColaboratorController = require("./ColaboratorController")
+const colaboratorController = new ColaboratorController()
+
 class MailController {
 
-    ColaboratorController = require("./ColaboratorController")
     
     nodemailer = require("nodemailer")
 
     
     constructor() {
-        this.colaboratorController = new this.ColaboratorController()
         this.transporter = this.nodemailer.createTransport({
             service: "gmail",
             auth: {
@@ -20,19 +21,20 @@ class MailController {
     }
     
     async sendEmail(mail) {
-        const colaboratorEmail = await this.colaboratorController.readOne(mail.colaboratorID)
+        console.log(process.env.EMAIL);
+        const colaborator = await colaboratorController.readOne(mail.colaboratorID)
 
-        console.log("email encontrado: " + colaboratorEmail);
+        console.log("email encontrado: " + colaborator.email);
 
         this.transporter.sendMail({
             from: "leonardoscristian@ufpi.edu.br>",
-            to: colaboratorEmail,
+            to: colaborator.email,
             subject: mail.subject,
             text: mail.message
         }).then(() => {
             console.log("Email enviado com sucesso!");
-        }).catch(() => {
-            console.log("Erro ao enviar email!");
+        }).catch((error) => {
+            console.log("Erro ao enviar email!" + error);
         })
     }
 }
