@@ -20,7 +20,7 @@
 	<p>Antes de executar, você deverá ter instalado as seguintes ferramentas:</p>
 	<ul>
 		<li><a href="https://nodejs.org/en/">NodeJS</a> na versão 16.13.1 LTS</li>
-		<li><a href="https://vuejs.org/en/">VueJS</a></li>
+		<li><a href="https://cli.vuejs.org/">VueJS-cli</a> na versão 4.5.15</li>
    		<li><a href="https://www.mongodb.com/">MongoDB e seu cliente (MongoDB Compass Comunity).</a></li>
    		<li>Um editor de texto de sua preferência, por exemplo: <a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
 	</ul>
@@ -36,6 +36,7 @@
 		<li>Na pasta frontend, execute o comando 'npm install' para instalar suas dependências</li>
 		<li>Execute o comando 'npm run serve' para inciar a aplicação na porta 8080</li></li> 
 		<li>Por fim, acesse o endereço 'http://localhost:8080' e a aplicação estará em funcionamento</li>
+		<hr>
 		<p>Obs: Para utilizar o serviço de email, configure o SMTP da sua conta do Gmail e adicione as variáveis EMAIL e PASSWORD em um arquivo '.env' na pasta 'backend'</p>
 	</ul>
 </div>
