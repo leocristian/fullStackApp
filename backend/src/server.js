@@ -34,6 +34,16 @@ server.use(function(req, res, next) {
 server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
 
+function verifyJWT(req, res, next) {
+    const token = req.headers['x-access-token']
+    jwt.verify(token, authConfig.secret, (err, decoded) => {
+        if(err) return res.sendStatus(401).end()
+
+        req.user._id = decoded.user._id
+        next()
+    })
+}
+
 server.post("/login", async (req, res) => {
 
     const { email, password } = req.body
@@ -49,9 +59,10 @@ server.post("/login", async (req, res) => {
         const idLogged = user._id
         console.log("id logado: " + idLogged);
         console.log("Secret: " + authConfig.secret);
-        // const token = jwt.sign({ id: idLogged }, authConfig.secret)
+        
+        const token = jwt.sign({ id: idLogged }, authConfig.secret)
 
-        res.redirect("/dashboard")
+        res.send({ user, token })
     }
 })
 

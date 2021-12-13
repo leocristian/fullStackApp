@@ -46,7 +46,8 @@ export default {
   methods: {
     login() {
         // Enviar dados para requisição
-        api.post("/login", this.user).then(() => {
+        api.post("/login", this.user).then((response) => {
+          console.log(response.data);
             this.$router.push("/dashboard")
         }).catch(() => {
           alert("Usuário não encontrado")
