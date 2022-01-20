@@ -1,6 +1,6 @@
-<h1 align="center">Teste Prático SPEEDIO</h1>
+<h1 align="center">Aplicação Web</h1>
 
-<p align="center">Repositório destinado à resolução do teste prático para o processo seletivo da SPEEDIO</p>
+<p align="center">Aplicação web responsável por realizar CRUDs de empresas e colaboradores. Desafio proposto para o processo seletivo da SPEEDIO</p>
 
 <p align="center">
     <a href="#description">Descrição</a> •
